@@ -3,6 +3,1081 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Offrir — La Loge de Léontine</title>
+	<meta name="description" content="Offrir une carte cadeau — La Loge de Léontine." />
+	<meta name="theme-color" content="#4E3B2A" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet" />
+
+	<style>
+		:root{
+			--ecru:#F7F2EB;
+			--offwhite:#FAF8F5;
+			--beigeLight:#EEE4D8;
+			--beigeSand:#DCC9B6;
+			--woodDeep:#5F4636;
+			--text:#2F2A26;
+			--text2:#6F6258;
+			--ink:var(--text);
+			--muted:rgba(111,98,88,.78);
+			--container:1160px;
+			--gutter:24px;
+			--r2:34px;
+			--shadow:0 32px 120px rgba(47,42,38,.22);
+			--shadowSoft:0 16px 55px rgba(47,42,38,.14);
+			--serif:"Cormorant Garamond","Playfair Display",serif;
+			--sans:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+			--accent:"Cinzel",serif;
+			--ease:cubic-bezier(.2,.8,.2,1);
+			--dur:.34s;
+		}
+
+		*{box-sizing:border-box}
+		html,body{height:100%}
+		body{
+			margin:0;
+			padding-top:74px;
+			font-family:var(--sans);
+			color:var(--ink);
+			background:
+				radial-gradient(1100px 640px at 18% -10%, rgba(180,142,106,.16), transparent 60%),
+				radial-gradient(980px 560px at 92% 8%, rgba(156,133,114,.20), transparent 62%),
+				radial-gradient(760px 420px at 55% 18%, rgba(250,248,245,.92), transparent 66%),
+				linear-gradient(180deg, var(--offwhite), var(--ecru) 56%, var(--beigeLight) 100%);
+			overflow-x:hidden;
+			text-rendering:optimizeLegibility;
+			-webkit-font-smoothing:antialiased;
+			-moz-osx-font-smoothing:grayscale;
+		}
+		body::before{
+			content:"";
+			position:fixed;inset:-35%;
+			background:
+				repeating-linear-gradient(90deg, rgba(78,59,42,.045) 0, rgba(78,59,42,.045) 1px, transparent 1px, transparent 12px),
+				repeating-linear-gradient(0deg, rgba(78,59,42,.030) 0, rgba(78,59,42,.030) 1px, transparent 1px, transparent 14px);
+			opacity:.14;
+			transform:rotate(-8deg);
+			pointer-events:none;
+			mix-blend-mode:multiply;
+		}
+
+		a{color:inherit}
+		.container{width:min(var(--container), calc(100% - (var(--gutter) * 2))); margin:0 auto}
+		:focus-visible{outline:2px solid rgba(198,169,107,.60);outline-offset:3px}
+		::selection{background:rgba(180,142,106,.22)}
+
+		.skip{
+			position:absolute;left:-999px;top:10px;
+			background:linear-gradient(135deg,var(--offwhite),rgba(198,169,107,.65));
+			color:var(--woodDeep);
+			padding:10px 14px;
+			border-radius:999px;
+			font-weight:800;
+			letter-spacing:.12em;
+			text-transform:uppercase;
+			z-index:999;
+			text-decoration:none;
+		}
+		.skip:focus{left:12px}
+
+		.topbar{
+			position:fixed;top:0;left:0;right:0;z-index:60;
+			backdrop-filter:blur(18px) saturate(1.2);
+			-webkit-backdrop-filter:blur(18px) saturate(1.2);
+			background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(250,248,245,.72));
+			border-bottom:1px solid rgba(95,70,54,.10);
+			box-shadow:0 10px 40px rgba(47,42,38,.06),0 1px 0 rgba(255,255,255,.70) inset;
+		}
+		.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+		.brand{display:flex;gap:12px;align-items:center;min-width:auto;text-decoration:none}
+		.brand strong{font-family:var(--accent);font-size:18px;letter-spacing:.14em;line-height:1;font-weight:700;text-transform:uppercase}
+		.brand span{display:block;margin-top:4px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,106,79,.68)}
+
+		.navlinks{display:flex;align-items:center;gap:18px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(95,70,54,.10);box-shadow:0 12px 40px rgba(47,42,38,.06),0 1px 0 rgba(255,255,255,.70) inset}
+		.navlinks a{position:relative;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(47,42,38,.82);padding:10px 12px;border-radius:999px;text-decoration:none;transition:transform var(--dur) var(--ease),color var(--dur) var(--ease),background var(--dur) var(--ease)}
+		.navlinks a::after{content:"";position:absolute;left:16px;right:16px;bottom:7px;height:1px;background:linear-gradient(90deg, transparent, rgba(198,169,107,.78), transparent);opacity:0;transform:translateY(4px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+		.navlinks a:hover{background:rgba(250,248,245,.72);transform:translateY(-1px);color:rgba(47,42,38,1);box-shadow:0 14px 46px rgba(47,42,38,.10)}
+		.navlinks a:hover::after{opacity:.95;transform:translateY(0)}
+		.navlinks a[aria-current="page"]{background:rgba(250,248,245,.92);color:rgba(47,42,38,1);border:1px solid rgba(180,142,106,.18);box-shadow:0 14px 46px rgba(47,42,38,.08)}
+
+		.burger{display:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:rgba(47,42,38,.92);font-size:18px}
+		.mobileMenu{display:none;border-bottom:1px solid rgba(78,59,42,.12);background:rgba(250,248,244,.86);backdrop-filter:blur(16px)}
+		.pill{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:999px;border:1px solid rgba(95,70,54,.14);background:rgba(250,248,245,.72);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(78,59,42,.86);text-decoration:none}
+
+		.section{padding:18px 0 54px}
+		.heroCard{
+			position:relative;
+			border-radius:var(--r2);
+			padding:26px 30px;
+			background:radial-gradient(760px 320px at 18% 10%, rgba(180,142,106,.20), transparent 58%),linear-gradient(135deg, rgba(250,248,245,.95), rgba(238,228,216,.72));
+			border:1px solid rgba(180,142,106,.20);
+			box-shadow:var(--shadow);
+			overflow:hidden;
+		}
+		.heroCard::before{
+			content:"";
+			position:absolute;
+			inset:14px;
+			border-radius:26px;
+			border:1px solid rgba(255,255,255,.58);
+			pointer-events:none;
+		}
+		.kicker{
+			position:relative;
+			display:inline-flex;
+			align-items:center;
+			gap:10px;
+			padding:9px 12px;
+			border-radius:999px;
+			background:rgba(250,248,245,.78);
+			border:1px solid rgba(95,70,54,.10);
+			color:rgba(111,98,88,.86);
+			font-size:12px;
+			letter-spacing:.18em;
+			text-transform:uppercase;
+			font-family:var(--accent);
+		}
+		.dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--offwhite),rgba(180,142,106,.92));box-shadow:0 0 0 4px rgba(180,142,106,.14)}
+		h1{
+			position:relative;
+			margin:10px 0 10px;
+			font-family:var(--accent);
+			font-size:clamp(26px,3.2vw,46px);
+			line-height:1.05;
+			letter-spacing:.14em;
+			text-transform:uppercase;
+			color:var(--woodDeep);
+		}
+		.giftIntroText{
+			position:relative;
+			display:grid;
+			grid-template-columns:repeat(2, minmax(0,1fr));
+			gap:12px;
+			margin-top:4px;
+		}
+		.giftIntroItem{
+			position:relative;
+			padding:14px 16px;
+			border-radius:20px;
+			background:rgba(250,248,245,.58);
+			border:1px solid rgba(95,70,54,.10);
+			box-shadow:0 14px 45px rgba(47,42,38,.07);
+		}
+		.giftIntroItem.full{grid-column:1/-1}
+		.giftIntroItem h3{
+			position:relative;
+			display:inline-flex;
+			margin:0 0 10px;
+			padding:8px 12px;
+			border-radius:999px;
+			font-family:var(--accent);
+			font-size:10px;
+			letter-spacing:.22em;
+			text-transform:uppercase;
+			color:rgba(95,70,54,.92);
+			background:rgba(250,248,245,.78);
+			border:1px solid rgba(180,142,106,.18);
+			box-shadow:0 12px 34px rgba(47,42,38,.16), 0 1px 0 rgba(255,255,255,.78) inset;
+			text-shadow:0 8px 24px rgba(47,42,38,.22);
+		}
+		.giftIntroItem p{
+			margin:0;
+			font-family:var(--serif);
+			font-size:clamp(17px,1.6vw,20px);
+			line-height:1.58;
+			color:rgba(78,59,42,.82);
+			text-wrap:pretty;
+		}
+		.giftIntroItem strong{color:var(--woodDeep);font-weight:700}
+		.callout{
+			position:relative;
+			margin-top:14px;
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			gap:10px;
+			padding:14px 18px;
+			border-radius:999px;
+			font-size:12px;
+			font-weight:900;
+			letter-spacing:.16em;
+			text-transform:uppercase;
+			text-decoration:none;
+			color:rgba(47,42,38,.94);
+			background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(180,142,106,.34));
+			border:1px solid rgba(180,142,106,.30);
+			box-shadow:0 18px 70px rgba(47,42,38,.10);
+			transition:transform var(--dur) var(--ease),filter var(--dur) var(--ease);
+		}
+		.callout:hover{transform:translateY(-1px);filter:saturate(1.04)}
+
+		.giftGallery{
+			position:relative;
+			margin-top:18px;
+			display:grid;
+			grid-template-columns:repeat(2, minmax(0,1fr));
+			gap:14px;
+		}
+		.giftThumb{
+			position:relative;
+			aspect-ratio:16/9;
+			padding:0;
+			border:1px solid rgba(180,142,106,.24);
+			border-radius:24px;
+			overflow:hidden;
+			background:rgba(250,248,245,.72);
+			box-shadow:0 18px 70px rgba(47,42,38,.10);
+			cursor:pointer;
+			transition:transform var(--dur) var(--ease), border-color var(--dur) var(--ease), filter var(--dur) var(--ease);
+		}
+		.giftThumb:hover{
+			transform:translateY(-2px);
+			border-color:rgba(180,142,106,.42);
+			filter:saturate(1.04);
+		}
+		.giftThumb img{
+			width:100%;
+			height:100%;
+			display:block;
+			object-fit:cover;
+			object-position:center center;
+		}
+		.giftCardsHeader{
+			position:relative;
+			margin-top:16px;
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			gap:14px;
+			flex-wrap:wrap;
+		}
+		.giftCardsHint{
+			margin:0;
+			font-family:var(--accent);
+			font-size:10.5px;
+			letter-spacing:.20em;
+			text-transform:uppercase;
+			color:rgba(111,98,88,.76);
+		}
+		.giftCardsNav{
+			display:flex;
+			align-items:center;
+			gap:10px;
+		}
+		.giftCardsArrow{
+			width:44px;
+			height:44px;
+			border-radius:999px;
+			border:1px solid rgba(180,142,106,.26);
+			background:rgba(250,248,245,.86);
+			color:rgba(47,42,38,.94);
+			font-size:26px;
+			line-height:1;
+			cursor:pointer;
+			box-shadow:0 14px 45px rgba(47,42,38,.10);
+			transition:transform var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease);
+		}
+		.giftCardsArrow:hover{
+			transform:translateY(-1px);
+			background:rgba(250,248,245,.98);
+			border-color:rgba(180,142,106,.42);
+		}
+		.giftCards{
+			position:relative;
+			margin-top:12px;
+			display:flex;
+			gap:14px;
+			overflow-x:auto;
+			padding:6px 2px 14px;
+			scroll-snap-type:x mandatory;
+			scroll-behavior:smooth;
+			scrollbar-width:none;
+		}
+		.giftCards::-webkit-scrollbar{display:none}
+		.giftCard{
+			flex:0 0 220px;
+			scroll-snap-align:start;
+			display:flex;
+			align-items:center;
+			justify-content:space-between;
+			gap:12px;
+			padding:16px;
+			border-radius:22px;
+			background:linear-gradient(180deg, rgba(250,248,245,.92), rgba(247,242,235,.76));
+			border:1px solid rgba(180,142,106,.22);
+			box-shadow:0 18px 70px rgba(47,42,38,.10);
+		}
+		.giftCardTitle{
+			display:grid;
+			gap:4px;
+			font-family:var(--accent);
+			font-size:10px;
+			letter-spacing:.20em;
+			text-transform:uppercase;
+			color:rgba(111,98,88,.78);
+		}
+		.giftCardAmount{
+			font-family:var(--serif);
+			font-size:30px;
+			line-height:1;
+			font-weight:600;
+			letter-spacing:.02em;
+			color:var(--woodDeep);
+			text-transform:none;
+		}
+		.giftOfferBtn{
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			min-width:82px;
+			padding:11px 13px;
+			border-radius:999px;
+			text-decoration:none;
+			font-size:10.5px;
+			font-weight:900;
+			letter-spacing:.14em;
+			text-transform:uppercase;
+			color:rgba(47,42,38,.94);
+			background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(180,142,106,.34));
+			border:1px solid rgba(180,142,106,.30);
+			box-shadow:0 14px 45px rgba(47,42,38,.10);
+			transition:transform var(--dur) var(--ease),filter var(--dur) var(--ease);
+		}
+		.giftOfferBtn:hover{transform:translateY(-1px);filter:saturate(1.04)}
+
+		.giftLightbox{
+			position:fixed;
+			inset:0;
+			z-index:120;
+			display:none;
+			align-items:center;
+			justify-content:center;
+			padding:28px;
+			background:rgba(47,42,38,.62);
+			backdrop-filter:blur(14px);
+			-webkit-backdrop-filter:blur(14px);
+		}
+		.giftLightbox.is-open{display:flex}
+		.giftLightboxFrame{
+			position:relative;
+			width:min(980px, 92vw);
+			height:min(76vh, 760px);
+			border-radius:30px;
+			overflow:hidden;
+			background:rgba(250,248,245,.92);
+			border:1px solid rgba(180,142,106,.28);
+			box-shadow:0 34px 130px rgba(0,0,0,.34);
+		}
+		.giftLightboxFrame img{
+			width:100%;
+			height:100%;
+			display:block;
+			object-fit:contain;
+			background:#f6f1ea;
+		}
+		.giftLightboxClose,
+		.giftLightboxArrow{
+			position:absolute;
+			z-index:2;
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			border:1px solid rgba(95,70,54,.14);
+			background:rgba(250,248,245,.88);
+			color:rgba(47,42,38,.94);
+			box-shadow:0 16px 46px rgba(47,42,38,.12);
+			cursor:pointer;
+			transition:transform var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+		}
+		.giftLightboxClose{
+			top:16px;
+			right:16px;
+			width:46px;
+			height:46px;
+			border-radius:16px;
+			font-size:24px;
+		}
+		.giftLightboxArrow{
+			top:50%;
+			width:54px;
+			height:54px;
+			border-radius:999px;
+			font-size:32px;
+			transform:translateY(-50%);
+		}
+		.giftLightboxArrow:hover,
+		.giftLightboxClose:hover{
+			background:rgba(250,248,245,.98);
+			border-color:rgba(180,142,106,.34);
+		}
+		.giftLightboxPrev{left:16px}
+		.giftLightboxNext{right:16px}
+		.giftLightboxCaption{
+			position:absolute;
+			left:50%;
+			bottom:16px;
+			transform:translateX(-50%);
+			padding:9px 13px;
+			border-radius:999px;
+			background:rgba(250,248,245,.84);
+			border:1px solid rgba(95,70,54,.10);
+			font-family:var(--accent);
+			font-size:10px;
+			letter-spacing:.22em;
+			text-transform:uppercase;
+			color:rgba(78,59,42,.76);
+		}
+
+		.reveal{opacity:0;transform:translateY(14px);transition:opacity 1.25s var(--ease),transform 1.25s var(--ease)}
+		.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+		@media (max-width:920px){
+			.navlinks{display:none}
+			.burger{display:inline-flex}
+		}
+		@media (max-width:720px){
+			body{padding-top:82px}
+			.nav{padding:14px 0}
+			.brand strong{font-size:17px}
+			.brand span{font-size:11px;letter-spacing:.08em}
+			.section{padding:22px 0 58px}
+			.heroCard{padding:26px 22px;border-radius:28px}
+			.giftIntroText{grid-template-columns:1fr;gap:10px}
+			.giftIntroItem{padding:14px}
+			.giftIntroItem p{font-size:17px;line-height:1.58}
+			.giftGallery{grid-template-columns:1fr;gap:10px}
+			.giftCardsHeader{align-items:flex-start}
+			.giftCardsHint{line-height:1.7}
+			.giftCards{margin-top:12px}
+			.giftCard{flex:0 0 86%}
+			.giftLightbox{padding:16px}
+			.giftLightboxFrame{width:94vw;height:72vh;border-radius:24px}
+			.giftLightboxArrow{width:46px;height:46px;font-size:26px}
+		}
+		@media (prefers-reduced-motion:reduce){
+			.reveal{opacity:1!important;transform:none!important;transition:none!important}
+		}
+
+		/* Responsive global */
+		@media (max-width:1200px){:root{--container:1040px;--gutter:22px}.navlinks{gap:10px}.navlinks a{letter-spacing:.18em;padding:10px 10px}}
+		@media (max-width:920px){.container{width:min(100% - 32px, var(--container))}.mobileMenu .pill{width:100%;justify-content:center}.giftIntroText{grid-template-columns:1fr}.giftGallery{grid-template-columns:1fr}.giftCardsHeader{display:grid;grid-template-columns:1fr}.giftCardsNav{justify-content:center}.giftCard{flex:0 0 78vw}.giftLightboxFrame{width:94vw;height:74vh}}
+		@media (max-width:520px){:root{--gutter:16px}body{overflow-x:hidden}.brand strong{font-size:14px;letter-spacing:.08em}.brand span{font-size:9px}.heroCard{padding:20px 16px;border-radius:24px}h1{font-size:24px;letter-spacing:.08em}.giftIntroItem h3{white-space:normal;line-height:1.4}.giftIntroItem p{font-size:16px;line-height:1.5}.giftCard{flex:0 0 86vw;gap:8px}.giftCardAmount{font-size:26px}.giftOfferBtn{min-width:74px;padding:10px}.giftLightboxArrow{width:40px;height:40px}.giftLightboxClose{width:40px;height:40px}}
+		/* Correctif final — menu responsive strictement identique à index */
+		@media (max-width:920px){
+			html,body{width:100%!important;overflow-x:hidden!important}
+			body{padding-top:82px!important}
+			.topbar{
+				position:fixed!important;
+				top:0!important;
+				left:0!important;
+				right:0!important;
+				z-index:9000!important;
+				background:linear-gradient(180deg, rgba(250,248,245,.90), rgba(250,248,245,.68))!important;
+				border-bottom:1px solid rgba(180,142,106,.18)!important;
+				box-shadow:0 14px 54px rgba(47,42,38,.10)!important;
+				backdrop-filter:blur(18px) saturate(1.12)!important;
+				-webkit-backdrop-filter:blur(18px) saturate(1.12)!important;
+			}
+			.navlinks{display:none!important}
+			.burger{
+				position:fixed!important;
+				top:14px!important;
+				right:14px!important;
+				z-index:9999!important;
+				display:flex!important;
+				align-items:center!important;
+				justify-content:center!important;
+				width:52px!important;
+				height:52px!important;
+				border-radius:999px!important;
+				background:
+					linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,242,235,.90)),
+					radial-gradient(circle at 30% 18%, rgba(198,169,107,.34), transparent 48%)!important;
+				border:1px solid rgba(180,142,106,.34)!important;
+				box-shadow:0 18px 54px rgba(47,42,38,.18),0 1px 0 rgba(255,255,255,.85) inset,0 0 0 6px rgba(250,248,245,.42)!important;
+				color:rgba(78,59,42,.96)!important;
+				font-size:0!important;
+				line-height:1!important;
+				cursor:pointer!important;
+				opacity:1!important;
+				visibility:visible!important;
+				transform:none!important;
+				pointer-events:auto!important;
+				touch-action:manipulation!important;
+				-webkit-tap-highlight-color:transparent!important;
+				transition:transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease)!important;
+			}
+			.burger::before{
+				content:""!important;
+				width:22px!important;
+				height:14px!important;
+				display:block!important;
+				flex:0 0 22px!important;
+				background:
+					linear-gradient(rgba(78,59,42,.96), rgba(78,59,42,.96)) 0 0/100% 1.5px no-repeat,
+					linear-gradient(rgba(78,59,42,.96), rgba(78,59,42,.96)) 0 50%/100% 1.5px no-repeat,
+					linear-gradient(rgba(78,59,42,.96), rgba(78,59,42,.96)) 0 100%/100% 1.5px no-repeat!important;
+				background-size:100% 1.5px,100% 1.5px,100% 1.5px!important;
+			}
+			.burger:hover,
+			.burger:focus-visible{
+				transform:translateY(-1px)!important;
+				border-color:rgba(180,142,106,.52)!important;
+				box-shadow:0 22px 64px rgba(47,42,38,.22),0 1px 0 rgba(255,255,255,.90) inset,0 0 0 7px rgba(250,248,245,.50)!important;
+			}
+			.mobileMenu{
+				position:fixed!important;
+				top:82px!important;
+				left:12px!important;
+				right:12px!important;
+				width:auto!important;
+				z-index:9998!important;
+				display:none;
+				max-height:calc(100vh - 104px)!important;
+				overflow:auto!important;
+				padding:10px!important;
+				background:
+					linear-gradient(180deg, rgba(250,248,245,.98), rgba(247,242,235,.94)),
+					radial-gradient(520px 180px at 50% 0%, rgba(180,142,106,.16), transparent 68%)!important;
+				border:1px solid rgba(180,142,106,.28)!important;
+				border-radius:26px!important;
+				box-shadow:0 26px 86px rgba(47,42,38,.22),0 1px 0 rgba(255,255,255,.78) inset!important;
+				backdrop-filter:blur(18px) saturate(1.12)!important;
+				-webkit-backdrop-filter:blur(18px) saturate(1.12)!important;
+				pointer-events:auto!important;
+				transform:none!important;
+			}
+			.mobileMenu.is-open{display:block!important;animation:menuReveal .24s var(--ease) both}
+			.mobileMenu .container{width:100%!important;max-width:100%!important}
+			.mobileMenu .pill{
+				display:flex!important;
+				width:100%!important;
+				justify-content:center!important;
+				text-align:center!important;
+				text-decoration:none!important;
+				padding:14px 16px!important;
+				border-radius:999px!important;
+				background:rgba(255,255,255,.54)!important;
+				border:1px solid rgba(180,142,106,.18)!important;
+				color:rgba(78,59,42,.92)!important;
+				box-shadow:0 10px 32px rgba(47,42,38,.06)!important;
+			}
+			.mobileMenu .pill:hover,
+			.mobileMenu .pill[aria-current="page"]{
+				background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(180,142,106,.18))!important;
+				border-color:rgba(180,142,106,.34)!important;
+			}
+		}
+		@keyframes menuReveal{
+			from{opacity:0;transform:translateY(-8px) scale(.985)}
+			to{opacity:1;transform:translateY(0) scale(1)}
+		}
+		@media (max-width:520px){
+			.burger{top:12px!important;right:12px!important;width:50px!important;height:50px!important}
+			.mobileMenu{top:78px!important;left:10px!important;right:10px!important}
+		}
+
+		footer,
+		.footer,
+		.footerLux,
+		.footerMinimal{
+			display:none!important;
+		}
+	/* Correctif définitif mobile offrir — aucun vide en bas */
+@media (max-width:920px){
+	html,
+	body{
+		height:auto!important;
+		min-height:0!important;
+		margin:0!important;
+		padding-bottom:0!important;
+		overflow-x:hidden!important;
+	}
+	main,
+	#main{
+		display:block!important;
+		height:auto!important;
+		min-height:0!important;
+		margin:0!important;
+		padding-bottom:0!important;
+		overflow:hidden!important;
+	}
+	main > section:last-child,
+	main > .section:last-child{
+		padding-bottom:0!important;
+		margin-bottom:0!important;
+	}
+	main > section:last-child > .container{
+		margin-bottom:0!important;
+		padding-bottom:0!important;
+	}
+	.heroCard{
+		margin-bottom:0!important;
+		padding-bottom:16px!important;
+		border-bottom-left-radius:0!important;
+		border-bottom-right-radius:0!important;
+	}
+	.giftCards{
+		margin-bottom:0!important;
+		padding-bottom:0!important;
+	}
+	.giftLightbox{
+		margin:0!important;
+	}
+	body::after,
+	main::after,
+	#main::after{
+		display:none!important;
+		content:none!important;
+		height:0!important;
+	}
+}
+@media (max-width:520px){
+	main > section:last-child,
+	main > .section:last-child{
+		padding-bottom:0!important;
+	}
+	.heroCard{
+		padding-bottom:12px!important;
+	}
+}
+/* Correctif réel mobile offrir — le vide venait du décor fixe immense + des ombres */
+@media (max-width:920px){
+	html{
+		height:auto!important;
+		min-height:0!important;
+		margin:0!important;
+		padding:0!important;
+		overflow-x:hidden!important;
+		overflow-y:auto!important;
+	}
+	body{
+		height:auto!important;
+		min-height:0!important;
+		margin:0!important;
+		padding-top:82px!important;
+		padding-bottom:0!important;
+		overflow-x:hidden!important;
+		overflow-y:auto!important;
+		background:linear-gradient(180deg, var(--offwhite), var(--ecru) 56%, var(--beigeLight) 100%)!important;
+	}
+	body::before{
+		inset:0!important;
+		width:100vw!important;
+		height:100vh!important;
+		transform:none!important;
+		overflow:hidden!important;
+		contain:paint!important;
+	}
+	main,
+	#main{
+		display:block!important;
+		height:auto!important;
+		min-height:0!important;
+		margin:0!important;
+		padding:0!important;
+		overflow:visible!important;
+	}
+	main > section:last-child,
+	main > .section:last-child{
+		padding-bottom:0!important;
+		margin-bottom:0!important;
+	}
+	main > section:last-child > .container{
+		margin-bottom:0!important;
+		padding-bottom:0!important;
+	}
+	.heroCard{
+		margin-bottom:0!important;
+		padding-bottom:0!important;
+		border-bottom-left-radius:0!important;
+		border-bottom-right-radius:0!important;
+		box-shadow:none!important;
+	}
+	.giftCards{
+		margin-bottom:0!important;
+		padding-bottom:0!important;
+	}
+	.giftCard{
+		box-shadow:none!important;
+	}
+	.giftLightbox{
+		margin:0!important;
+	}
+	body::after,
+	main::after,
+	#main::after{
+		display:none!important;
+		content:none!important;
+		height:0!important;
+		min-height:0!important;
+	}
+}
+@media (max-width:520px){
+	main > section:last-child,
+	main > .section:last-child{
+		padding-bottom:0!important;
+	}
+	.heroCard{
+		padding-bottom:0!important;
+	}
+}
+</style>
+</head>
+<body>
+	<a class="skip" href="#main">Aller au contenu</a>
+
+	<header class="topbar">
+		<div class="container">
+			<div class="nav">
+				<a class="brand" href="index.html" aria-label="Accueil">
+					<div>
+						<strong>La Loge de Léontine</strong>
+						<span>Maison de soin • Rituels d’exception</span>
+					</div>
+				</a>
+
+				<nav class="navlinks" aria-label="Navigation">
+					<a href="index.html">Accueil</a>
+					<a href="prestations-reservation.html">Soin et réservations</a>
+					<a href="prestations.html">Se former</a>
+					<a href="offrir.html" aria-current="page">Offrir</a>
+				</nav>
+
+				<button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
+			</div>
+		</div>
+	</header>
+
+	<div class="mobileMenu" id="mobileMenu">
+		<div class="container" style="padding:12px 0 16px;">
+			<div style="display:grid; gap:10px;">
+				<a class="pill" href="index.html">Accueil</a>
+				<a class="pill" href="prestations-reservation.html">Soin et réservations</a>
+				<a class="pill" href="prestations.html">Se former</a>
+				<a class="pill" href="offrir.html" aria-current="page">Offrir</a>
+			</div>
+		</div>
+	</div>
+
+	<main id="main">
+		<section class="section">
+			<div class="container">
+				<div class="heroCard reveal">
+					<div class="kicker"><span class="dot" aria-hidden="true"></span> Carte cadeau</div>
+					<h1>Offrir une carte cadeau</h1>
+					<div class="giftIntroText">
+						<div class="giftIntroItem">
+							<h3>Faire plaisir</h3>
+							<p>Offrez à vos proches un moment de détente et de bien-être grâce à mes cartes cadeaux.</p>
+						</div>
+
+						<div class="giftIntroItem">
+							<h3>Pour toutes les occasions</h3>
+							<p>Anniversaire, fête, remerciement ou simple attention : la carte cadeau permet de profiter d’un soin ou d’un massage dans un cadre apaisant.</p>
+						</div>
+
+						<div class="giftIntroItem">
+							<h3>Commande en ligne</h3>
+							<p>Cliquez sur l’offre de votre choix ci-dessous et procédez au paiement en toute sécurité.</p>
+						</div>
+
+						<div class="giftIntroItem">
+							<h3>Sur place</h3>
+							<p>Vous préférez régler à l’institut ? Il est également possible d’acheter votre carte cadeau directement sur place.</p>
+						</div>
+
+						<div class="giftIntroItem full">
+							<h3>Besoin d’un conseil ?</h3>
+							<p>Pour toute demande de renseignements ou si vous souhaitez être accompagné(e) dans votre choix, contactez-moi au <strong>06 85 49 27 26</strong>. Je serai ravie de vous conseiller.</p>
+						</div>
+					</div>
+					<div class="giftGallery" aria-label="Aperçu des cartes cadeaux">
+						<button class="giftThumb" type="button" data-index="0" aria-label="Agrandir c1">
+							<img src="./c1.jpg" alt="Carte cadeau La Loge de Léontine c1" loading="lazy" decoding="async" />
+						</button>
+						<button class="giftThumb" type="button" data-index="1" aria-label="Agrandir c2">
+							<img src="./c2.jpg" alt="Carte cadeau La Loge de Léontine c2" loading="lazy" decoding="async" />
+						</button>
+					</div>
+
+					<div class="giftCardsHeader">
+						<p class="giftCardsHint">Faites défiler ou utilisez les flèches pour voir toutes les cartes cadeaux.</p>
+						<div class="giftCardsNav" aria-label="Navigation des cartes cadeaux">
+							<button class="giftCardsArrow" id="giftCardsPrev" type="button" aria-label="Voir les cartes précédentes">‹</button>
+							<button class="giftCardsArrow" id="giftCardsNext" type="button" aria-label="Voir les cartes suivantes">›</button>
+						</div>
+					</div>
+
+					<div class="giftCards" id="giftCardsTrack" aria-label="Choisir une carte cadeau">
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">35 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_00wfZh1Cj9Nh1o1cKH18c0h" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">50 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_28EdR9gxdf7B2s59yv18c0g" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">65 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_00wcN5bcT8Jd2s55if18c0e" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">80 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_00wcN5bcT8Jd2s55if18c0e" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">95 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_6oUeVdbcT5x1aYB3a718c0c" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">105 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_cNieVd4Ov0cH1o111Z18c0d" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">150 €</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_00waEXdl10cH9Ux8ur18c0i" target="_blank" rel="noopener">Offrir</a>
+						</article>
+						<article class="giftCard">
+							<div class="giftCardTitle"><span>Carte cadeau</span><strong class="giftCardAmount">Montant libre</strong></div>
+							<a class="giftOfferBtn" href="https://buy.stripe.com/test_6oU9AT0yf6B52s5aCz18c0b" target="_blank" rel="noopener">Offrir</a>
+						</article>
+					</div>
+				</div>
+
+				<div class="giftLightbox" id="giftLightbox" role="dialog" aria-modal="true" aria-label="Galerie cartes cadeaux">
+					<div class="giftLightboxFrame">
+						<button class="giftLightboxClose" id="giftLightboxClose" type="button" aria-label="Fermer">×</button>
+						<button class="giftLightboxArrow giftLightboxPrev" id="giftLightboxPrev" type="button" aria-label="Image précédente">‹</button>
+						<img id="giftLightboxImage" src="./c1.jpg" alt="Carte cadeau agrandie" />
+						<button class="giftLightboxArrow giftLightboxNext" id="giftLightboxNext" type="button" aria-label="Image suivante">›</button>
+						<div class="giftLightboxCaption" id="giftLightboxCaption">1 / 2</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const burger = document.getElementById("burger");
+		const mobileMenu = document.getElementById("mobileMenu");
+
+		if (burger && burger.parentElement !== document.body) {
+			document.body.appendChild(burger);
+		}
+		if (mobileMenu && mobileMenu.parentElement !== document.body) {
+			document.body.appendChild(mobileMenu);
+		}
+
+		function closeMobileMenu(){
+			if (!mobileMenu || !burger) return;
+			mobileMenu.classList.remove("is-open");
+			mobileMenu.style.display = "none";
+			burger.setAttribute("aria-expanded", "false");
+		}
+
+		function syncMobileMenuPosition(){
+			if (!burger || !mobileMenu) return;
+
+			const isMobile = window.matchMedia("(max-width: 920px)").matches;
+			burger.style.display = isMobile ? "flex" : "";
+			burger.style.position = isMobile ? "fixed" : "";
+			mobileMenu.style.position = isMobile ? "fixed" : "";
+
+			if (!isMobile) {
+				closeMobileMenu();
+			}
+		}
+
+		function toggleMobileMenu(event){
+			event?.preventDefault?.();
+			event?.stopPropagation?.();
+			if (!mobileMenu || !burger) return;
+			const isOpen = mobileMenu.classList.contains("is-open") || mobileMenu.style.display === "block";
+			if (isOpen){
+				closeMobileMenu();
+			} else {
+				syncMobileMenuPosition();
+				mobileMenu.classList.add("is-open");
+				mobileMenu.style.display = "block";
+				burger.setAttribute("aria-expanded", "true");
+			}
+		}
+
+		syncMobileMenuPosition();
+		window.addEventListener("resize", syncMobileMenuPosition);
+		window.addEventListener("orientationchange", syncMobileMenuPosition);
+		burger?.addEventListener("click", toggleMobileMenu);
+		burger?.addEventListener("touchend", toggleMobileMenu, { passive:false });
+
+		mobileMenu?.querySelectorAll("a").forEach(a =>
+			a.addEventListener("click", closeMobileMenu)
+		);
+
+		(function giftCardsCarousel(){
+			const track = document.getElementById("giftCardsTrack");
+			const prev = document.getElementById("giftCardsPrev");
+			const next = document.getElementById("giftCardsNext");
+			if (!track || !prev || !next) return;
+
+			function cardStep(){
+				const card = track.querySelector(".giftCard");
+				if (!card) return 240;
+				const styles = getComputedStyle(track);
+				const gap = parseFloat(styles.columnGap || styles.gap || "14") || 14;
+				return card.getBoundingClientRect().width + gap;
+			}
+
+			prev.addEventListener("click", () => {
+				track.scrollBy({ left: -cardStep(), behavior: "smooth" });
+			});
+
+			next.addEventListener("click", () => {
+				track.scrollBy({ left: cardStep(), behavior: "smooth" });
+			});
+		})();
+
+		(function giftGallery(){
+			const images = ["./c1.jpg", "./c2.jpg"];
+			const lightbox = document.getElementById("giftLightbox");
+			const lightboxImage = document.getElementById("giftLightboxImage");
+			const caption = document.getElementById("giftLightboxCaption");
+			const close = document.getElementById("giftLightboxClose");
+			const prev = document.getElementById("giftLightboxPrev");
+			const next = document.getElementById("giftLightboxNext");
+			const thumbs = Array.from(document.querySelectorAll(".giftThumb"));
+			let currentIndex = 0;
+
+			function sync(index){
+				currentIndex = (index + images.length) % images.length;
+				lightboxImage.src = images[currentIndex];
+				lightboxImage.alt = `Carte cadeau agrandie ${currentIndex + 1}`;
+				caption.textContent = `${currentIndex + 1} / ${images.length}`;
+			}
+
+			function open(index){
+				sync(index);
+				lightbox.classList.add("is-open");
+				close.focus();
+			}
+
+			function hide(){
+				lightbox.classList.remove("is-open");
+			}
+
+			thumbs.forEach((thumb, index) => {
+				thumb.addEventListener("click", () => open(index));
+			});
+			close?.addEventListener("click", hide);
+			prev?.addEventListener("click", () => sync(currentIndex - 1));
+			next?.addEventListener("click", () => sync(currentIndex + 1));
+			lightbox?.addEventListener("click", event => {
+				if (event.target === lightbox) hide();
+			});
+			document.addEventListener("keydown", event => {
+				if (!lightbox?.classList.contains("is-open")) return;
+				if (event.key === "Escape") hide();
+				if (event.key === "ArrowLeft") sync(currentIndex - 1);
+				if (event.key === "ArrowRight") sync(currentIndex + 1);
+			});
+		})();
+
+		const els = Array.from(document.querySelectorAll(".reveal"));
+		const io = new IntersectionObserver(
+			(entries) => {
+				for (const e of entries){
+					if (e.isIntersecting){
+						e.target.classList.add("is-visible");
+						io.unobserve(e.target);
+					}
+				}
+			},
+			{ threshold: 0.12 }
+		);
+		els.forEach(el => io.observe(el));
+		(function removeMobileBottomGap(){
+			function trim(){
+				if (!window.matchMedia("(max-width: 920px)").matches) return;
+
+				document.documentElement.style.marginBottom = "0";
+				document.documentElement.style.paddingBottom = "0";
+				document.body.style.marginBottom = "0";
+				document.body.style.paddingBottom = "0";
+
+				const main = document.getElementById("main");
+				if (main) {
+					main.style.marginBottom = "0";
+					main.style.paddingBottom = "0";
+				}
+
+				const lastSection = main?.lastElementChild;
+				if (lastSection) {
+					lastSection.style.marginBottom = "0";
+					lastSection.style.paddingBottom = "0";
+				}
+
+				const heroCard = document.querySelector(".heroCard");
+				if (heroCard) {
+					heroCard.style.marginBottom = "0";
+					heroCard.style.paddingBottom = "0";
+				}
+			}
+
+			trim();
+			window.addEventListener("load", trim, { once:true });
+			window.addEventListener("resize", trim);
+			window.addEventListener("orientationchange", trim);
+		})();
+		(function forceRemoveRealBottomBlankOffer(){
+			function fix(){
+				if (!window.matchMedia("(max-width: 920px)").matches) return;
+
+				const target = document.querySelector(".heroCard") || document.querySelector("main > section:last-child");
+				if (!target) return;
+
+				document.documentElement.style.paddingBottom = "0";
+				document.documentElement.style.marginBottom = "0";
+				document.body.style.paddingBottom = "0";
+				document.body.style.marginBottom = "0";
+				document.body.style.overscrollBehavior = "none";
+
+				const main = document.getElementById("main");
+				if (main) {
+					main.style.paddingBottom = "0";
+					main.style.marginBottom = "0";
+				}
+
+				target.style.marginBottom = "0";
+				target.style.paddingBottom = "0";
+
+				requestAnimationFrame(() => {
+					const bottom = Math.ceil(target.getBoundingClientRect().bottom + window.scrollY);
+					const pageBottom = Math.ceil(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight));
+					const gap = pageBottom - bottom;
+
+					if (gap > 3) {
+						target.style.marginBottom = `-${gap}px`;
+						document.body.style.marginBottom = `-${gap}px`;
+					}
+				});
+			}
+
+			fix();
+			window.addEventListener("load", fix, { once:true });
+			window.addEventListener("resize", fix);
+			window.addEventListener("orientationchange", fix);
+			setTimeout(fix, 250);
+			setTimeout(fix, 900);
+		})();
+	</script>
+</body>
+</html><!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<title>La Loge de Léontine — Maison de soin de prestige</title>
 	<meta name="description" content="Maison de soin • Rituels d’exception • Facialiste & massages. La Suze-sur-Sarthe." />
